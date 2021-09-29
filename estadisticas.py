@@ -11,7 +11,7 @@ Ingrese datos: 2000 3 3 kiwi 5
 ----------------------------------------------------------
 
 Las estadísticas que DonJuan quiere obtener son:
-* Por cada año ingresaso, la cantidad de "naranja", "manzana", "pera", "kiwi" que ha vendido.
+* Por cada año ingresado, la cantidad de "naranja", "manzana", "pera", "kiwi" que ha vendido.
 * Por cada mes ingresado, la cantidad de "naranja", "manzana", "pera", "kiwi", que han vendido
 * La cantidad total de "naranja", "pera", "kiwi", vendida, mostrando el total y porcentajes.
 
@@ -35,6 +35,11 @@ def estadistica():
     while True:
         user_input = input("Ingrese Datos: ").split()
 
+        anio = user_input[0]
+        mes = user_input[1]
+        fruta = user_input[3]
+        cantidad_vendida = int(user_input[4])
+
         if not user_input:
             break
 
@@ -44,14 +49,16 @@ def estadistica():
         # 3: fruta
         # 4: cantidad vendida
 
-        if user_input[3] == "manzana":
-            manzanas += int(user_input[4])
-        elif user_input[3] == "pera":
-            peras += int(user_input[4])
-        elif user_input[3] == "kiwi":
-            kiwis += int(user_input[4])
-        elif user_input[3] == "naranja":
-            naranjas += int(user_input[4])
+        if fruta == "manzana":
+            manzanas += cantidad_vendida
+        elif fruta == "pera":
+            peras += cantidad_vendida
+        elif fruta == "kiwi":
+            kiwis += cantidad_vendida
+        elif fruta == "naranja":
+            naranjas += cantidad_vendida
+        else:
+            print("Ingrese sólo la fruta en venta")
 
         anio, mes = user_input[0], user_input[1]
 
