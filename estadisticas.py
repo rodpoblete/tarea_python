@@ -28,27 +28,34 @@ __________________________________________________________
 
 
 def estadistica():
-    manzanas, peras, kiwis, naranjas = 0, 0, 0, 0
-    user_input = input("Ingrese Datos: ").split()
 
-    while user_input:
+    manzanas, peras, kiwis, naranjas = 0, 0, 0, 0
+    anio, mes = 0, 0
+
+    while True:
+        user_input = input("Ingrese Datos: ").split()
+
+        if not user_input:
+            break
+
         # 0: año
         # 1: mes
         # 2: día
-        # 3 fruta (str)
-        # cantidad vendida
-        # if user_input[3] == "manzana":
-        #     manzanas += int(user_input[4])
-        # elif user_input[3] == "pera":
-        #     peras += int(user_input[4])
-        # elif user_input[3] == "kiwi":
-        #     kiwis += int(user_input[4])
-        # elif user_input[3] == "naranja":
-        #     naranjas += int(user_input[4])
+        # 3: fruta
+        # 4: cantidad vendida
 
-        user_input = input("Ingrese Datos: ").split()
+        if user_input[3] == "manzana":
+            manzanas += int(user_input[4])
+        elif user_input[3] == "pera":
+            peras += int(user_input[4])
+        elif user_input[3] == "kiwi":
+            kiwis += int(user_input[4])
+        elif user_input[3] == "naranja":
+            naranjas += int(user_input[4])
 
-    # print(manzanas)
+        anio, mes = user_input[0], user_input[1]
+
+    print(f"año: {anio} mes:{mes}")
 
 
 if __name__ == "__main__":
