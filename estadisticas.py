@@ -56,7 +56,7 @@ def estadistica():
             )
             print(f"Total Vendido: {total_vendido}")
             print(
-                f"Total Naranjas: {naranjas} {round((naranjas/total_vendido) * 100), 1} %"
+                f"Total Naranjas: {naranjas} {round((naranjas/total_vendido) * 100, 1)} %"
             )
             print(f"Total Manzanas: {manzanas} {(manzanas/total_vendido) * 100} %")
             print(f"Total Peras: {peras} {(peras/total_vendido) * 100} %")
