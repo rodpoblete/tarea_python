@@ -33,7 +33,7 @@ def estadistica():
     # Inicializamos las variables que contienen la suma de las frutas
     manzanas, peras, kiwis, naranjas = 0, 0, 0, 0
     # Inicializamos variables que guardaran último año que ingreso el usuario por cada iteración del while
-    ultimo_anio, ultimo_mes = 0, 0
+    ultimo_anio, ultimo_mes, ultimo_dia = 0, 0, 0
 
     while True:
         # Capturamos el ingreso del usuario y con el método split lo separamos en una lista
@@ -48,8 +48,16 @@ def estadistica():
 
         # Se valida si el usuario no ingresa nada y presiona enter el programa se interrumpe y se muestran las estadisticas globales
         if not user_input:
+            print(
+                f"Total mes {ultimo_mes}/{ultimo_anio} n= {naranjas} m= {manzanas} p= {peras} k= {kiwis}"
+            )
+            print(
+                f"Año: {ultimo_anio} n= {naranjas} m= {manzanas} p= {peras} k= {kiwis}"
+            )
             print(f"Total Vendido: {total_vendido}")
-            print(f"Total Naranjas: {naranjas} {(naranjas/total_vendido) * 100} %")
+            print(
+                f"Total Naranjas: {naranjas} {round((naranjas/total_vendido) * 100), 1} %"
+            )
             print(f"Total Manzanas: {manzanas} {(manzanas/total_vendido) * 100} %")
             print(f"Total Peras: {peras} {(peras/total_vendido) * 100} %")
             print(f"Total Kiwis: {kiwis} {(kiwis/total_vendido) * 100} %")
@@ -58,6 +66,7 @@ def estadistica():
         # Asignamos nombres a los elementos de la lista para que sea más sencillo trabajar con ellos. (cada nombre es representativo a su valor)
         anio = user_input[0]
         mes = user_input[1]
+        dia = user_input[2]
         fruta = user_input[3]
         cantidad_vendida = int(user_input[4])
 
