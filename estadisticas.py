@@ -28,27 +28,40 @@ __________________________________________________________
 
 
 def estadistica():
+    """Función que retorna las cantidad de frutas vendidas por período y sus estadísticas"""
 
+    # Inicializamos las variables que contienen la suma de las frutas
     manzanas, peras, kiwis, naranjas = 0, 0, 0, 0
-    anio, mes = 0, 0
+    # Inicializamos variables que guardaran último año que ingreso el usuario por cada iteración del while
+    ultimo_anio, ultimo_mes = 0, 0
 
     while True:
+        # Capturamos el ingreso del usuario y con el método split lo separamos en una lista
         user_input = input("Ingrese Datos: ").split()
 
-        anio = user_input[0]
-        mes = user_input[1]
-        fruta = user_input[3]
-        cantidad_vendida = int(user_input[4])
-
-        if not user_input:
-            break
-
+        # Cada indice de la lista contiene el siguiente valor
         # 0: año
         # 1: mes
         # 2: día
         # 3: fruta
         # 4: cantidad vendida
 
+        # Se valida si el usuario no ingresa nada y presiona enter el programa se interrumpe y se muestran las estadisticas globales
+        if not user_input:
+            print(f"Total Vendido: {total_vendido}")
+            print(f"Total Naranjas: {naranjas} {(naranjas/total_vendido) * 100} %")
+            print(f"Total Manzanas: {manzanas} {(manzanas/total_vendido) * 100} %")
+            print(f"Total Peras: {peras} {(peras/total_vendido) * 100} %")
+            print(f"Total Kiwis: {kiwis} {(kiwis/total_vendido) * 100} %")
+            break
+
+        # Asignamos nombres a los elementos de la lista para que sea más sencillo trabajar con ellos. (cada nombre es representativo a su valor)
+        anio = user_input[0]
+        mes = user_input[1]
+        fruta = user_input[3]
+        cantidad_vendida = int(user_input[4])
+
+        # Con estas condicionales evaluamos cada fruta que ingresa el usuario y la vamos sumando. Si ingresa una distinta se mostrará el texto de la sentencia else
         if fruta == "manzana":
             manzanas += cantidad_vendida
         elif fruta == "pera":
@@ -60,9 +73,25 @@ def estadistica():
         else:
             print("Ingrese sólo la fruta en venta")
 
-        anio, mes = user_input[0], user_input[1]
+        # Comparamos si ha cambiado el mes o año para mostrar por pantalla la cantidad de fruta vendida en ese periodo (en el mes o en el año)
+        if ultimo_anio == 0 or ultimo_mes == 0:
+            pass  # con la sentencia pass nos saltamos este if y continuamos con los de más abajo
+        elif ultimo_anio != anio:
+            # Año 2001 n= 8 m = 10 p= 0 k= 8
+            print(
+                f"Año: {ultimo_anio} n= {naranjas} m= {manzanas} p= {peras} k= {kiwis}"
+            )
+        elif ultimo_mes != mes:
+            # Total mes 1/2001 n= 8 m= 10 p= 0 k= 8
+            print(
+                f"Total mes {ultimo_mes}/{ultimo_anio} n= {naranjas} m= {manzanas} p= {peras} k= {kiwis}"
+            )
 
-    print(f"año: {anio} mes:{mes}")
+        # Sumamos todas las frutas vendidas
+        total_vendido = manzanas + peras + kiwis + naranjas
+
+        # Actualizamos los años con el ultimo ingresado por el usuario para una nueva iteración
+        ultimo_anio, ultimo_mes = anio, mes
 
 
 if __name__ == "__main__":
